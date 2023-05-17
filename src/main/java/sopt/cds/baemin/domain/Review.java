@@ -1,6 +1,7 @@
 package sopt.cds.baemin.domain;
 
 import lombok.*;
+import sopt.cds.baemin.dto.review.ReviewResponseDto;
 
 import javax.persistence.*;
 
@@ -36,4 +37,14 @@ public class Review {
     @Column(name = "review_image_url", nullable = false)
     private String reviewImageUrl;
 
+
+    public ReviewResponseDto toDto() {
+        return ReviewResponseDto.builder()
+                .reviewId(reviewId)
+                .nickname(nickname)
+                .reviewRate(reviewRate)
+                .content(content)
+                .reviewImageUrl(reviewImageUrl)
+                .build();
+    }
 }
