@@ -12,11 +12,12 @@ public enum Success {
     /**
      * 200 OK
      */
-    SIGNUP_SUCCESS(HttpStatus.OK, "리뷰 조회에 성공했습니다."),
+    SIGNUP_SUCCESS(HttpStatus.OK, "리뷰 조회에 성공했습니다.", true),
     ;
 
     private final HttpStatus httpStatus;
     private final String message;
+    private final boolean isSuccess;
 
     public int getHttpStatusCode() {
         return httpStatus.value();
