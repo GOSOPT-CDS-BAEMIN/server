@@ -21,18 +21,18 @@ public class ApiResponse<T> {
     private T data;
 
     public static ApiResponse success(Success success) {
-        return new ApiResponse<>(success.getHttpStatusCode(), true, success.getMessage());
+        return new ApiResponse<>(success.getHttpStatusCode(), success.isSuccess(), success.getMessage());
     }
 
     public static <T> ApiResponse<T> success(Success success, T data) {
-        return new ApiResponse<T>(success.getHttpStatusCode(), true, success.getMessage(), data);
+        return new ApiResponse<T>(success.getHttpStatusCode(), success.isSuccess(), success.getMessage(), data);
     }
 
     public static ApiResponse error(Error error) {
-        return new ApiResponse<>(error.getHttpStatusCode(), false, error.getMessage());
+        return new ApiResponse<>(error.getHttpStatusCode(), error.isSuccess(), error.getMessage());
     }
 
     public static ApiResponse error(Error error, String message) {
-        return new ApiResponse<>(error.getHttpStatusCode(), false, message);
+        return new ApiResponse<>(error.getHttpStatusCode(), error.isSuccess(), message);
     }
 }

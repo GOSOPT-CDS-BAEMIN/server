@@ -12,12 +12,12 @@ public enum Error {
     /**
      * 400 BAD REQUEST
      */
-    REQUEST_VALIDATION_EXCEPTION(HttpStatus.BAD_REQUEST, "잘못된 요청입니다"),
+    REQUEST_VALIDATION_EXCEPTION(HttpStatus.BAD_REQUEST, "잘못된 요청입니다", false),
 
     /**
      * 404 NOT FOUND
      */
-    NOT_EXIST_STORE_ID_EXCEPTION(HttpStatus.NOT_FOUND, "존재하지 않는 매장번호입니다"),
+    NOT_EXIST_STORE_ID_EXCEPTION(HttpStatus.NOT_FOUND, "존재하지 않는 매장번호입니다", false),
 
     /**
      * 409 CONFLICT
@@ -27,11 +27,12 @@ public enum Error {
     /**
      * 500 INTERNAL SERVER ERROR
      */
-    INTERNAL_SERVER_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "서버 내부 오류"),
+    INTERNAL_SERVER_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "서버 내부 오류", false),
     ;
 
     private final HttpStatus httpStatus;
     private final String message;
+    private final boolean isSuccess;
 
     public int getHttpStatusCode() {
         return httpStatus.value();
