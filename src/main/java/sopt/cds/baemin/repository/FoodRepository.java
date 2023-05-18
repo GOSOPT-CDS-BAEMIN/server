@@ -1,9 +1,8 @@
 package sopt.cds.baemin.repository;
 
+import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import sopt.cds.baemin.domain.Food;
-
-import java.util.Optional;
 
 public interface FoodRepository extends JpaRepository<Food, Long> {
 
