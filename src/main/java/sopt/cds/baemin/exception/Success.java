@@ -14,6 +14,7 @@ public enum Success {
      */
     SIGNUP_SUCCESS(HttpStatus.OK, "리뷰 조회에 성공했습니다.", true),
     ORDER_SUCCESS(HttpStatus.OK, "주문 또는 삭제 성공.", true),
+    STORES_GET_SUCCESS(HttpStatus.OK, "가게 목록 조회에 성공했습니다.", true)
     ;
 
     private final HttpStatus httpStatus;
