@@ -1,11 +1,21 @@
 package sopt.cds.baemin.domain;
 
-import lombok.*;
-
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Entity
-@Setter
+@Getter
 @Builder
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -31,7 +41,7 @@ public class Food {
     private int price;
 
     @Column(name = "is_best", nullable = false)
-    private String isBest;
+    private boolean isBest;
 
     @Column(name = "food_description", nullable = false)
     private String foodDescription;
@@ -39,4 +49,7 @@ public class Food {
     @Column(name = "food_image_url", nullable = false)
     private String foodImageUrl;
 
+    public boolean getIsBest() {
+        return this.isBest;
+    }
 }
