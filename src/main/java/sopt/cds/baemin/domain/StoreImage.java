@@ -1,8 +1,18 @@
 package sopt.cds.baemin.domain;
 
-import lombok.*;
-
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Getter
@@ -30,12 +40,17 @@ public class StoreImage {
     private String thirdStoreImageUrl;
 
     // 정적 팩토리 메서드
-    public static StoreImage of(Store store, String firstStoreImageUrl, String secondStoreImageUrl, String thirdStoreImageUrl) {
+    public static StoreImage of(Store store, String firstStoreImageUrl, String secondStoreImageUrl,
+                                String thirdStoreImageUrl) {
         return builder()
                 .store(store)
                 .firstStoreImageUrl(firstStoreImageUrl)
                 .secondStoreImageUrl(secondStoreImageUrl)
                 .thirdStoreImageUrl(thirdStoreImageUrl)
                 .build();
+    }
+
+    public String[] getImageUrls() {
+        return new String[]{firstStoreImageUrl, secondStoreImageUrl, thirdStoreImageUrl};
     }
 }
