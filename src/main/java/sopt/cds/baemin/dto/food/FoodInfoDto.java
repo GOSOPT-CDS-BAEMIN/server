@@ -1,6 +1,5 @@
 package sopt.cds.baemin.dto.food;
 
-import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -8,7 +7,7 @@ import sopt.cds.baemin.domain.Food;
 
 @Getter
 @Builder
-@AllArgsConstructor(access = AccessLevel.PRIVATE)
+@AllArgsConstructor
 public class FoodInfoDto {
     private Long foodId;
     private String foodName;
