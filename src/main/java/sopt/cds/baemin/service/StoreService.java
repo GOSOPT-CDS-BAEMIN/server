@@ -3,6 +3,7 @@ package sopt.cds.baemin.service;
 import static sopt.cds.baemin.exception.Error.NOT_EXIST_STORE_ID_EXCEPTION;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -21,11 +22,16 @@ public class StoreService {
     private final StoreImageRepository storeImageRepository;
     private final StoreImageService storeImageService;
 
-    public List<StoreInfoDto> findStores(Long storeTypeId) {
-        List<Store> stores =
-                storeTypeId == null ? storeRepository.findAll() : storeRepository.findStoresByStoreTypeId(storeTypeId);
-        return stores.stream().map(s -> StoreInfoDto.of(s, storeImageService.getStoreImages(s)))
+    public List<StoreInfoDto> findStores(Optional<Long> storeTypeId) {
+        return getStores(storeTypeId).stream().map(s -> StoreInfoDto.of(s, storeImageService.getStoreImages(s)))
                 .collect(Collectors.toList());
+    }
+
+    private List<Store> getStores(Optional<Long> storeTypeId) {
+        if (storeTypeId.isPresent()) {
+            return storeRepository.findStoresByStoreTypeId(storeTypeId.get());
+        }
+        return storeRepository.findAll();
     }
 
     public StoreDetailInfoDto findOneStore(final Long storeId) {
