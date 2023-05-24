@@ -1,9 +1,53 @@
 spring:
+  profiles:
+    active: set1
+
+# set1
+---
+spring:
+  profiles: set1
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: ${db-url}
     username: ${db-username}
-    password: ${db-password}
+    password: ${db-pwd}
+
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+jwt:
+  secret: ${jwt-secret}
+
+slack:
+  channel:
+      id: ${channel-id}
+  webhook:
+    url: ${webhook-url}
+
+logging:
+  level:
+    org:
+      hibernate:
+        type:
+          descriptor:
+            sql: trace
+server:
+  port: 8080
+
+
+# set2
+---
+spring:
+  datasource:
+    profiles: set2
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: ${rds-url}
+    username: ${rds-username}
+    password: ${rds-pwd}
 
   jpa:
     show-sql: true
@@ -20,5 +64,3 @@ logging:
         type:
           descriptor:
             sql: trace
-server:
-  port: 8080

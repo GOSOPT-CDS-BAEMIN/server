@@ -26,6 +26,8 @@ dependencies {
 	runtimeOnly 'com.mysql:mysql-connector-j'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+	implementation 'com.slack.api:slack-api-client:1.28.0'
 }
 
 tasks.named('test') {
