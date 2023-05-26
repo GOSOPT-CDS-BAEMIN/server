@@ -6,7 +6,6 @@ import org.springframework.stereotype.Repository;
 import sopt.cds.baemin.domain.Store;
 import sopt.cds.baemin.domain.StoreImage;
 
-@Repository
 public interface StoreImageRepository extends JpaRepository<StoreImage, Long> {
     Optional<StoreImage> findStoreImageByStore(Store store);
 }

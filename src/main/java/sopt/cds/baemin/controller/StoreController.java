@@ -6,7 +6,6 @@ import static sopt.cds.baemin.exception.Success.STORE_GET_SUCCESS;
 import java.util.List;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
-import org.springframework.lang.Nullable;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,9 +23,8 @@ public class StoreController {
     private final StoreService storeService;
 
     @GetMapping
-    public ApiResponse<List<StoreInfoDto>> findStores(@RequestParam(value = "type") @Nullable final Optional<Long> storeTypeId) {
-        List<StoreInfoDto> stores = storeService.findStores(storeTypeId);
-        return ApiResponse.success(STORES_GET_SUCCESS, stores);
+    public ApiResponse<List<StoreInfoDto>> findStores(@RequestParam(value = "type") final Optional<Long> storeTypeId) {
+        return ApiResponse.success(STORES_GET_SUCCESS, storeService.findStores(storeTypeId));
     }
 
     @GetMapping("/{storeId}")
