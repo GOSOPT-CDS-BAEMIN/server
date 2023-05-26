@@ -12,15 +12,16 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import sopt.cds.baemin.common.dto.ApiResponse;
 import sopt.cds.baemin.exception.Error;
 import sopt.cds.baemin.exception.model.CustomException;
-import sopt.cds.baemin.tools.slack.SlackHelper;
+import sopt.cds.baemin.tools.slack.SlackUtil;
 
+import java.io.IOException;
 import java.util.Objects;
 
 @RestControllerAdvice
 @Component
 @RequiredArgsConstructor
 public class ControllerExceptionAdvice {
-    private final SlackHelper slackHelper;
+    private final SlackUtil slackUtil;
 
     /**
      * 400 BAD_REQUEST
@@ -39,8 +40,8 @@ public class ControllerExceptionAdvice {
      */
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ExceptionHandler(Exception.class)
-    protected ApiResponse<Object> handleException(final Exception e) {
-        slackHelper.sendNotification(e);
+    protected ApiResponse<Object> handleException(final Exception error) throws IOException {
+        slackUtil.process("본인이 예외를 처리했다면 버튼을 눌러주세요.", error);
         return ApiResponse.error(Error.INTERNAL_SERVER_ERROR);
     }
 
@@ -48,8 +49,9 @@ public class ControllerExceptionAdvice {
      * Custom custom error
      */
     @ExceptionHandler(CustomException.class)
-    protected ResponseEntity<ApiResponse> handleSoptException(CustomException e) {
-        return ResponseEntity.status(e.getHttpStatus())
-                .body(ApiResponse.error(e.getError(), e.getMessage()));
+    protected ResponseEntity<ApiResponse> handleSoptException(CustomException error) throws IOException {
+        slackUtil.process("본인이 예외를 처리했다면 버튼을 눌러주세요.", error);
+        return ResponseEntity.status(error.getHttpStatus())
+                .body(ApiResponse.error(error.getError(), error.getMessage()));
     }
 }

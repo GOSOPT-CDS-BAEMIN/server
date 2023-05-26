@@ -13,6 +13,7 @@ spring:
     password: ${db-pwd}
 
   jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
     show-sql: true
     hibernate:
       ddl-auto: update
@@ -39,7 +40,7 @@ server:
   port: 8080
 
 
-# set2
+#set2
 ---
 spring:
   datasource:
@@ -50,6 +51,7 @@ spring:
     password: ${rds-pwd}
 
   jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
     show-sql: true
     hibernate:
       ddl-auto: update
