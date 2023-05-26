@@ -19,6 +19,7 @@ public enum Error {
      */
     NOT_EXIST_STORE_ID_EXCEPTION(HttpStatus.NOT_FOUND, "존재하지 않는 매장번호입니다", false),
     NOT_EXIST_FOOD_ID_EXCEPTION(HttpStatus.NOT_FOUND, "존재하지 않는 음식번호입니다", false),
+    NOT_EXIST_CLIENT_ID_EXCEPTION(HttpStatus.NOT_FOUND, "존재하지 않는 고객번호입니다", false),
     NOT_EXIST_FOOD_IN_CART_EXCEPTION(HttpStatus.NOT_FOUND, "장바구니 내에 존재하지 않는 음식입니다", false),
     NOT_EXIST_STORE_IMAGE_EXCEPTION(HttpStatus.NOT_FOUND, "존재하지 않는 매장사진입니다", false),
 

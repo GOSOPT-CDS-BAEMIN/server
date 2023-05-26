@@ -1,6 +1,7 @@
 package sopt.cds.baemin.controller;
 
 import lombok.AccessLevel;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -21,5 +22,12 @@ public class CartController {
         cartService.orderCartItems(request);
         return ApiResponse.success(Success.ORDER_SUCCESS);
     }
+
+    @GetMapping("/{clientId}")
+    @ResponseStatus(HttpStatus.OK)
+    public ApiResponse findClientCartList(@PathVariable final Long clientId) {
+        return ApiResponse.success(Success.FIND_CART_ITEMS_SUCCESS, cartService.findClientCartData(clientId));
+    }
+
 
 }
