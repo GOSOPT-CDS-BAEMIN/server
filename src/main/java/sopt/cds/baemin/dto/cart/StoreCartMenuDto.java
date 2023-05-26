@@ -17,6 +17,7 @@ public class StoreCartMenuDto {
     private Long storeId;
     private String storeName;
     private int deliveryFee;
+    private int minOrderPrice;
     private List<FoodCartDto> foods;
 
     public static StoreCartMenuDto of(Store store, List<FoodCartDto> foods) {
@@ -24,6 +25,7 @@ public class StoreCartMenuDto {
                 .storeId(store.getStoreId())
                 .storeName(store.getStoreName())
                 .deliveryFee(store.getDeliveryFee())
+                .minOrderPrice(store.getMinOrderPrice())
                 .foods(foods)
                 .build();
     }
