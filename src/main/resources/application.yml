@@ -1,11 +1,19 @@
 spring:
+  profiles:
+    active: set2
+
+# set1
+---
+spring:
+  profiles: set1
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: ${db-url}
     username: ${db-username}
-    password: ${db-password}
+    password: ${db-pwd}
 
   jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
     show-sql: true
     hibernate:
       ddl-auto: update
@@ -22,3 +30,31 @@ logging:
             sql: trace
 server:
   port: 8080
+
+
+#set2
+---
+spring:
+  datasource:
+    profiles: set2
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: ${rds-url}
+    username: ${rds-username}
+    password: ${rds-pwd}
+
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+
+logging:
+  level:
+    org:
+      hibernate:
+        type:
+          descriptor:
+            sql: trace
