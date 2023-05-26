@@ -24,6 +24,10 @@ public class Cart {
     @JoinColumn(name = "storeId")
     private Store store;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "clientId")
+    private Client client;
+
     @Column(name = "food_count", nullable = false)
     private int foodCount;
 }

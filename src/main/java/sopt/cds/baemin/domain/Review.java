@@ -25,6 +25,10 @@ public class Review {
     @JoinColumn(name = "storeId")
     private Store store;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "clientId")
+    private Client client;
+
     @Column(nullable = false)
     private String nickname;
 
