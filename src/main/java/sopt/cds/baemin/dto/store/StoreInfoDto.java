@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import sopt.cds.baemin.domain.Store;
+import sopt.cds.baemin.domain.StoreImage;
 
 @Getter
 @Builder
@@ -21,15 +22,21 @@ public class StoreInfoDto {
     private float rate;
     private boolean isCouponExist;
     private boolean isNew;
-    private String[] storeImages;
+    private String firstImageUrl;
+    private String secondImageUrl;
+    private String thirdImageUrl;
 
-    public static StoreInfoDto of(Store store, String[] storeImages) {
+    public static StoreInfoDto of(Store store, StoreImage storeImage) {
         return StoreInfoDto.builder().storeId(store.getStoreId()).storeTypeId(store.getStoreType().getStoreTypeId())
                 .storeType(store.getStoreType().getType()).storeName(store.getStoreName())
                 .deliveryTime(getDeliveryTimeToString(store.getMinDeliveryTime(), store.getMaxDeliveryTime()))
                 .description(store.getDescription()).minOrderPrice(store.getMinOrderPrice())
                 .deliveryFee(store.getDeliveryFee()).rate(store.getRate()).isCouponExist(store.getIsCouponExist())
-                .isNew(store.getIsNew()).storeImages(storeImages).build();
+                .isNew(store.getIsNew())
+                .firstImageUrl(storeImage.getFirstStoreImageUrl())
+                .secondImageUrl(storeImage.getSecondStoreImageUrl())
+                .thirdImageUrl(storeImage.getThirdStoreImageUrl())
+                .build();
     }
 
     private static String getDeliveryTimeToString(int minDeliveryTime, int maxDeliveryTime) {
