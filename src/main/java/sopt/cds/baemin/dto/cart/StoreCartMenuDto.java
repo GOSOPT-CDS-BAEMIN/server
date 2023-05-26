@@ -1,13 +1,12 @@
 package sopt.cds.baemin.dto.cart;
 
+import java.util.List;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import sopt.cds.baemin.domain.Store;
 import sopt.cds.baemin.dto.food.FoodCartDto;
-
-import java.util.List;
 
 @Getter
 @Builder
