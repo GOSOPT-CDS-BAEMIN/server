@@ -21,7 +21,7 @@ public class ReviewController {
     @ResponseStatus(HttpStatus.OK)
     public ApiResponse findStoreReview(@PathVariable final Long storeId) {
         List<ReviewResponseDto> reviews = reviewService.findReviewByStoreId(storeId);
-        return ApiResponse.success(Success.SIGNUP_SUCCESS, reviews);
+        return ApiResponse.success(Success.FIND_REVIEW_SUCCESS, reviews);
     }
 
 }
