@@ -18,6 +18,7 @@ public enum Success {
     STORES_GET_SUCCESS(HttpStatus.OK, "가게 목록 조회에 성공했습니다.", true),
     FOOD_GET_SUCCESS(HttpStatus.OK, "음식 조회에 성공했습니다.", true),
     STORE_GET_SUCCESS(HttpStatus.OK, "가게 조회에 성공했습니다.", true),
+    SLACK_ISSUE_PROCESS_SUCCESS(HttpStatus.OK, "슬랙 이슈 처리 요청에 성공했습니다.", true),
     ;
 
     private final HttpStatus httpStatus;
