@@ -41,7 +41,7 @@ public class ControllerExceptionAdvice {
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ExceptionHandler(Exception.class)
     protected ApiResponse<Object> handleException(final Exception error) throws IOException {
-        slackUtil.process("본인이 예외를 처리했다면 버튼을 눌러주세요.", error);
+        slackUtil.sendAlert(error);
         return ApiResponse.error(Error.INTERNAL_SERVER_ERROR);
     }
 
@@ -50,7 +50,7 @@ public class ControllerExceptionAdvice {
      */
     @ExceptionHandler(CustomException.class)
     protected ResponseEntity<ApiResponse> handleSoptException(CustomException error) throws IOException {
-        slackUtil.process("본인이 예외를 처리했다면 버튼을 눌러주세요.", error);
+        slackUtil.sendAlert(error);
         return ResponseEntity.status(error.getHttpStatus())
                 .body(ApiResponse.error(error.getError(), error.getMessage()));
     }

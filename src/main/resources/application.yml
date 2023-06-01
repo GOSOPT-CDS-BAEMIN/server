@@ -59,6 +59,15 @@ spring:
       hibernate:
         format_sql: true
 
+jwt:
+  secret: ${jwt-secret}
+
+slack:
+  channel:
+    id: ${channel-id}
+  webhook:
+    url: ${webhook-url}
+
 logging:
   level:
     org:

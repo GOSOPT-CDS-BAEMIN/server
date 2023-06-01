@@ -31,6 +31,7 @@ public enum Error {
      * 500 INTERNAL SERVER ERROR
      */
     INTERNAL_SERVER_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "서버 내부 오류", false),
+    SLACK_API_CONNECTING_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "슬랙 API 연결에 실패하였습니다.", false),
     ;
 
     private final HttpStatus httpStatus;
