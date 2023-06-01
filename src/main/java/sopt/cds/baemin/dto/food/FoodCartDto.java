@@ -4,27 +4,30 @@ import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import sopt.cds.baemin.domain.Cart;
 import sopt.cds.baemin.domain.Food;
 
 @Getter
 @Builder
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
-public class FoodInfoDto {
+public class FoodCartDto {
+
     private Long foodId;
     private String foodName;
     private int price;
-    private boolean isBest;
-    private String foodDescription;
     private String foodImageUrl;
+    private String foodDescription;
+    private int foodCount;
 
-    public static FoodInfoDto of(Food food) {
-        return FoodInfoDto.builder()
+    public static FoodCartDto from(Cart cart) {
+        Food food = cart.getFood();
+        return FoodCartDto.builder()
                 .foodId(food.getFoodId())
                 .foodName(food.getFoodName())
                 .price(food.getPrice())
-                .isBest(food.getIsBest())
                 .foodDescription(food.getFoodDescription())
                 .foodImageUrl(food.getFoodImageUrl())
+                .foodCount(cart.getFoodCount())
                 .build();
     }
 }
