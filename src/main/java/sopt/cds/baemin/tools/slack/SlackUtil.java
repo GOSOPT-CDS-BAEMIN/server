@@ -45,8 +45,8 @@ public class SlackUtil {
 
     public void sendAlert(Exception error) throws IOException {
 
-        // 현재 프로파일이 set1이 아니면 알림보내지 않기
-        if (!env.getActiveProfiles()[0].equals("set1")) {
+        // 현재 프로파일이 set2가 아니면 알림보내지 않기
+        if (!env.getActiveProfiles()[0].equals("set2")) {
             return;
         }
 
